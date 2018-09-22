@@ -2,6 +2,7 @@ package algorytmus.labyrinth;
 
 import algorytmus.labyrinth.dijkstra.DijkstraAlgorithm;
 import algorytmus.labyrinth.dijkstra.input.InputHelper;
+import algorytmus.labyrinth.dijkstra.input.MapToGraphConverter;
 import algorytmus.labyrinth.dijkstra.model.Edge;
 import algorytmus.labyrinth.dijkstra.model.Graph;
 import algorytmus.labyrinth.dijkstra.model.Vertex;
@@ -77,8 +78,10 @@ public class LabyrinthApplication {
 
 		InputHelper inputHelper = new InputHelper();
 		List<int[][]> listOfMapsFromFile = inputHelper.getListOfMapsFromFile("algorytmus_zadanie_1_input.txt");
+
+		MapToGraphConverter mapToGraphConverter = new MapToGraphConverter();
 		for(int i = 0; i < listOfMapsFromFile.size(); i++){
-			inputHelper.convertMapToGraph(listOfMapsFromFile.get(3));
+			mapToGraphConverter.convertMapToGraph(listOfMapsFromFile.get(i));
 		}
 
 
