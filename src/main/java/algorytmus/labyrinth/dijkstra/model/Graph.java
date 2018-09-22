@@ -13,6 +13,10 @@ public class Graph {
     public Graph() {
     }
 
+    public void addVertex(Vertex vertex){
+        this.vertexes.add(vertex);
+    }
+
     public List<Vertex> getVertexes() {
         return vertexes;
     }

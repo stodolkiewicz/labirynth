@@ -76,7 +76,11 @@ public class LabyrinthApplication {
 //		System.out.println(dijkstraAlgorithm.getShortestPathTo(vertex1));
 
 		InputHelper inputHelper = new InputHelper();
-		List<int[][]> listOfMapsFromFile = inputHelper.getListOfMapsFromFile("algorytmus_zadanie_2_input.txt");
+		List<int[][]> listOfMapsFromFile = inputHelper.getListOfMapsFromFile("algorytmus_zadanie_1_input.txt");
+		for(int i = 0; i < listOfMapsFromFile.size(); i++){
+			inputHelper.convertMapToGraph(listOfMapsFromFile.get(3));
+		}
+
 
 	}
 }
