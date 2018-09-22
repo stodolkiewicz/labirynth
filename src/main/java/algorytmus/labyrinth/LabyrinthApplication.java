@@ -1,17 +1,18 @@
 package algorytmus.labyrinth;
 
-import algorytmus.labyrinth.algorithm.Algorithm;
-import algorytmus.labyrinth.model.Edge;
-import algorytmus.labyrinth.model.Vertex;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import algorytmus.labyrinth.dijkstra.DijkstraAlgorithm;
+import algorytmus.labyrinth.dijkstra.model.Edge;
+import algorytmus.labyrinth.dijkstra.model.Graph;
+import algorytmus.labyrinth.dijkstra.model.Vertex;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LabyrinthApplication {
 
 	public static void main(String[] args) {
 
+		List<Vertex> vertexList = new ArrayList<>();
 		Vertex vertex1 = new Vertex(0,3, new ArrayList<>());
 		Vertex vertex2 = new Vertex(1,3, new ArrayList<>());
 		Vertex vertex3 = new Vertex(2,3, new ArrayList<>());
@@ -22,6 +23,16 @@ public class LabyrinthApplication {
 		Vertex vertex8 = new Vertex(0,0, new ArrayList<>());
 		Vertex vertex9 = new Vertex(1,0, new ArrayList<>());
 		Vertex vertex10 = new Vertex(2,0, new ArrayList<>());
+
+		vertexList.add(vertex1);
+		vertexList.add(vertex2);
+		vertexList.add(vertex3);
+		vertexList.add(vertex4);
+		vertexList.add(vertex6);
+		vertexList.add(vertex7);
+		vertexList.add(vertex8);
+		vertexList.add(vertex9);
+		vertexList.add(vertex10);
 
 		vertex1.addAdjacency(new Edge(1, vertex1, vertex2));
 		vertex1.addAdjacency(new Edge(1, vertex1, vertex4));
@@ -53,9 +64,14 @@ public class LabyrinthApplication {
 		vertex10.addAdjacency(new Edge(1, vertex10, vertex7));
 		vertex10.addAdjacency(new Edge(1, vertex10, vertex9));
 
-		Algorithm algorithm = new Algorithm();
-		algorithm.computePaths(vertex7);
+		Graph graph = new Graph();
+		graph.setVertexes(vertexList);
+		graph.setDestinationVertex(vertex1);
+		graph.setSourceVertex(vertex10);
 
-		System.out.println(algorithm.getShortestPathTo(vertex1));
+		DijkstraAlgorithm dijkstraAlgorithm = new DijkstraAlgorithm(graph);
+		dijkstraAlgorithm.computePaths();
+
+		System.out.println(dijkstraAlgorithm.getShortestPathTo(vertex1));
 	}
 }

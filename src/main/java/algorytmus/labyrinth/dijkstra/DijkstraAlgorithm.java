@@ -1,16 +1,23 @@
-package algorytmus.labyrinth.algorithm;
+package algorytmus.labyrinth.dijkstra;
 
-import algorytmus.labyrinth.model.Edge;
-import algorytmus.labyrinth.model.Vertex;
+import algorytmus.labyrinth.dijkstra.model.Edge;
+import algorytmus.labyrinth.dijkstra.model.Graph;
+import algorytmus.labyrinth.dijkstra.model.Vertex;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class Algorithm {
+public class DijkstraAlgorithm {
+    private Graph graph;
 
-    public void computePaths(Vertex sourceVertex){
+    public DijkstraAlgorithm(Graph graph) {
+        this.graph = graph;
+    }
+
+    public void computePaths(){
+        Vertex sourceVertex = graph.getSourceVertex();
         sourceVertex.setDistance(0);
         PriorityQueue<Vertex> priorityQueue = new PriorityQueue<>();
         priorityQueue.add(sourceVertex);
@@ -42,5 +49,13 @@ public class Algorithm {
         Collections.reverse(shortestPathToTarget);
 
         return shortestPathToTarget;
+    }
+
+    public Graph getGraph() {
+        return graph;
+    }
+
+    public void setGraph(Graph graph) {
+        this.graph = graph;
     }
 }

@@ -1,4 +1,4 @@
-package algorytmus.labyrinth.model;
+package algorytmus.labyrinth.dijkstra.model;
 
 import java.util.ArrayList;
 import java.util.List;

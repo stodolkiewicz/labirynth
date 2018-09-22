@@ -1,4 +1,4 @@
-package algorytmus.labyrinth.model;
+package algorytmus.labyrinth.dijkstra.model;
 
 public class Edge {
     private int weight;
