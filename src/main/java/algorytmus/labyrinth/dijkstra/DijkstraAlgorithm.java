@@ -12,6 +12,8 @@ import java.util.PriorityQueue;
 public class DijkstraAlgorithm {
     private Graph graph;
 
+    public DijkstraAlgorithm() {}
+
     public DijkstraAlgorithm(Graph graph) {
         this.graph = graph;
     }
@@ -37,30 +39,6 @@ public class DijkstraAlgorithm {
                 }
             }
         }
-    }
-    public List<Vertex> getShortestPathToTargetVertex(){
-        Vertex targetVertex = graph.getDestinationVertex();
-        List<Vertex> shortestPathToTarget = new ArrayList<>();
-
-        for(Vertex vertex = targetVertex; vertex != null; vertex = vertex.getPreviousVertex()){
-            shortestPathToTarget.add(vertex);
-        }
-
-        Collections.reverse(shortestPathToTarget);
-
-        return shortestPathToTarget;
-    }
-
-    public List<Vertex> getShortestPathTo(Vertex targetVertex){
-        List<Vertex> shortestPathToTarget = new ArrayList<>();
-
-        for(Vertex vertex = targetVertex; vertex != null; vertex = vertex.getPreviousVertex()){
-            shortestPathToTarget.add(vertex);
-        }
-
-        Collections.reverse(shortestPathToTarget);
-
-        return shortestPathToTarget;
     }
 
     public Graph getGraph() {

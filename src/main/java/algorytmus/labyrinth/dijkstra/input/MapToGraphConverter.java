@@ -29,7 +29,7 @@ public class MapToGraphConverter {
                 }
                 else if(currentFieldValue == 3){
                     Vertex vertex = createVertexAndAddToGraph(graph, mapRows, i, j);
-                    graph.setDestinationVertex(vertex);
+                    graph.setTargetVertex(vertex);
                 }
                 else if(currentFieldValue > 6 && currentFieldValue < 100){
                     Vertex vertex = createVertexAndAddToGraph(graph, mapRows, i, j);
@@ -63,6 +63,7 @@ public class MapToGraphConverter {
         v1.ifPresent(vertex1 -> {
             if(vertex1.isPortal()){
                 Optional<Vertex> exitPortal = getExitPortal(graph, vertex1);
+
                 exitPortal.ifPresent(exitVertex -> {
                     vertexProcessed.addAdjacency(new Edge(vertexProcessed, exitVertex));
                 });
@@ -87,17 +88,20 @@ public class MapToGraphConverter {
     private Optional<Vertex> getExitPortal(Graph graph, Vertex entryPortal){
         List<Vertex> vertexesWithGivenPortalNumber= graph.getVertexes().stream()
                 .filter(vertex -> vertex.getPortalNumber() == entryPortal.getPortalNumber())
-                .filter(vertex -> entryPortal.getxPosition() != vertex.getxPosition() &&
-                                  entryPortal.getyPosition() != vertex.getyPosition())
                 .collect(Collectors.toList());
 
         if(vertexesWithGivenPortalNumber.size() == 0){
             return Optional.empty();
+        }else if(vertexesWithGivenPortalNumber.size() == 1){
+            return Optional.of(entryPortal);
         }else{
+            if(vertexesWithGivenPortalNumber.get(0).getxPosition() == entryPortal.getxPosition() &&
+                vertexesWithGivenPortalNumber.get(0).getyPosition() == entryPortal.getyPosition()){
+                return Optional.of(vertexesWithGivenPortalNumber.get(1));
+            }
             return Optional.of(vertexesWithGivenPortalNumber.get(0));
         }
     }
-
 
     private Vertex createVertexAndAddToGraph(Graph graph, int mapRows, int i, int j) {
         Vertex vertex = new Vertex(j, mapRows - i - 1);

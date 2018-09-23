@@ -92,6 +92,6 @@ public class Vertex implements Comparable<Vertex>{
 
     @Override
     public String toString() {
-        return  xPosition + " " + yPosition;
+        return  "(" + xPosition + "," + yPosition + ")";
     }
 }
