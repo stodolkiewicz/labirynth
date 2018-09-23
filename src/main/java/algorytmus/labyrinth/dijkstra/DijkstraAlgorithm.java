@@ -4,9 +4,6 @@ import algorytmus.labyrinth.dijkstra.model.Edge;
 import algorytmus.labyrinth.dijkstra.model.Graph;
 import algorytmus.labyrinth.dijkstra.model.Vertex;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.PriorityQueue;
 
 public class DijkstraAlgorithm {

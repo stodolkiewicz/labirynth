@@ -38,6 +38,10 @@ public class MapToGraphConverter {
                 }
             }
         }
+
+        //TO DO update all vertexes with the targetVertex so that we can use some heuristic
+        //by changing the implementation of compareTo method in Vertex class (order in priorityQueue depends on it)
+
         return graph;
     }
 

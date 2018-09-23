@@ -67,7 +67,7 @@ public class Graph {
     @Override
     public String toString() {
         String graphString = "";
-        for(Vertex vertex: vertexes){
+        for(Vertex vertex: shortestPathToTarget){
             graphString += vertex.toString();
         }
         graphString += "\n";

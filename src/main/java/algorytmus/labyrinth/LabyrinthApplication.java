@@ -25,12 +25,6 @@ public class LabyrinthApplication {
 			Graph graph = mapToGraphConverter.convertMapToGraph(listOfMapsFromFile.get(i));
 			mapToGraphConverter.updateAdjacencies(graph);
 			graphs.add(graph);
-
-//			DijkstraAlgorithm dijkstraAlgorithm = new DijkstraAlgorithm(graphs.get(i));
-//			dijkstraAlgorithm.computePaths();
-//			List<Vertex> shortestPathTo = dijkstraAlgorithm.getShortestPathToTargetVertex();
-//
-//			System.out.println(shortestPathTo);
 		}
 
 		graphsWrapper.setGraphs(graphs);
