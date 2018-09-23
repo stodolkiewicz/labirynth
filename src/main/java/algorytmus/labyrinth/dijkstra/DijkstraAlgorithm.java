@@ -33,6 +33,10 @@ public class DijkstraAlgorithm {
                     adjacentVertex.setDistance(newDistance);
                     adjacentVertex.setPreviousVertex(currentVertex);
                     priorityQueue.add(adjacentVertex);
+                    //stop execution if we got to target Vertex
+                    if(adjacentVertex.equals(adjacentVertex.getTargetVertex())){
+                        return;
+                    }
                 }
             }
         }

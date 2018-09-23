@@ -8,6 +8,7 @@ public class Vertex implements Comparable<Vertex>{
     private int yPosition;
     private List<Edge> adjaciencies = new ArrayList<>();
     private Vertex previousVertex;
+    private Vertex targetVertex;
     private boolean isPortal = false;
     private int portalNumber;
 
@@ -23,6 +24,14 @@ public class Vertex implements Comparable<Vertex>{
     public Vertex(int xPosition, int yPosition) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
+    }
+
+    public Vertex getTargetVertex() {
+        return targetVertex;
+    }
+
+    public void setTargetVertex(Vertex targetVertex) {
+        this.targetVertex = targetVertex;
     }
 
     public void addAdjacency(Edge edge){
@@ -87,11 +96,34 @@ public class Vertex implements Comparable<Vertex>{
 
     @Override
     public int compareTo(Vertex otherVertex) {
-        return Integer.compare(this.distance, otherVertex.distance);
+        int valueOfCurrentVertex = this.distance + Math.abs(this.getxPosition() - this.targetVertex.getxPosition()) +
+                Math.abs(this.getyPosition() - this.targetVertex.getyPosition());
+        int valueOfTargetVertex = otherVertex.distance + Math.abs(otherVertex.getxPosition() - this.targetVertex.getxPosition()) +
+                Math.abs(otherVertex.getyPosition() - this.targetVertex.getyPosition());
+
+        return Integer.compare(valueOfCurrentVertex, valueOfTargetVertex);
     }
 
     @Override
     public String toString() {
         return  "(" + xPosition + "," + yPosition + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Vertex vertex = (Vertex) o;
+
+        if (getxPosition() != vertex.getxPosition()) return false;
+        return getyPosition() == vertex.getyPosition();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getxPosition();
+        result = 31 * result + getyPosition();
+        return result;
     }
 }

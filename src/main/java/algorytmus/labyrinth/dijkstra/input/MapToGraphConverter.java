@@ -14,7 +14,7 @@ public class MapToGraphConverter {
         Graph graph = new Graph();
         int mapRows = map.length;
         int mapColumns = map[0].length;
-
+        Vertex targetVertex = null;
         for(int i = 0; i < mapRows; i++){
             for(int j = 0; j < mapColumns; j++){
                 int currentFieldValue = map[i][j];
@@ -29,7 +29,8 @@ public class MapToGraphConverter {
                 }
                 else if(currentFieldValue == 3){
                     Vertex vertex = createVertexAndAddToGraph(graph, mapRows, i, j);
-                    graph.setTargetVertex(vertex);
+                    targetVertex = vertex;
+                    graph.setTargetVertex(targetVertex);
                 }
                 else if(currentFieldValue > 6 && currentFieldValue < 100){
                     Vertex vertex = createVertexAndAddToGraph(graph, mapRows, i, j);
@@ -39,10 +40,17 @@ public class MapToGraphConverter {
             }
         }
 
-        //TO DO update all vertexes with the targetVertex so that we can use some heuristic
+        //Updating all vertexes with the targetVertex so that we can use some heuristic
         //by changing the implementation of compareTo method in Vertex class (order in priorityQueue depends on it)
+        updateTargetVertexForAllVertexes(graph, targetVertex);
 
         return graph;
+    }
+
+    private void updateTargetVertexForAllVertexes(Graph graph, Vertex targetVertex) {
+        for(Vertex vertex: graph.getVertexes()){
+            vertex.setTargetVertex(targetVertex);
+        }
     }
 
     public void updateAdjacencies(Graph graph){

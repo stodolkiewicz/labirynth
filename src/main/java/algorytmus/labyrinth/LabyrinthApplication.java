@@ -15,7 +15,7 @@ public class LabyrinthApplication {
 
 	public static void main(String[] args) {
 		InputHelper inputHelper = new InputHelper();
-		List<int[][]> listOfMapsFromFile = inputHelper.getListOfMapsFromFile("algorytmus_zadanie_2_input.txt");
+		List<int[][]> listOfMapsFromFile = inputHelper.getListOfMapsFromFile("algorytmus_zadanie_1_input.txt");
 
 		MapToGraphConverter mapToGraphConverter = new MapToGraphConverter();
 

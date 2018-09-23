@@ -35,7 +35,6 @@ public class Graph {
         return shortestPathToTarget;
     }
 
-
     public void addVertex(Vertex vertex){
         this.vertexes.add(vertex);
     }
