@@ -98,10 +98,10 @@ public class Vertex implements Comparable<Vertex>{
     public int compareTo(Vertex otherVertex) {
         int valueOfCurrentVertex = this.distance + Math.abs(this.getxPosition() - this.targetVertex.getxPosition()) +
                 Math.abs(this.getyPosition() - this.targetVertex.getyPosition());
-        int valueOfTargetVertex = otherVertex.distance + Math.abs(otherVertex.getxPosition() - this.targetVertex.getxPosition()) +
+        int valueOfOtherVertex = otherVertex.distance + Math.abs(otherVertex.getxPosition() - this.targetVertex.getxPosition()) +
                 Math.abs(otherVertex.getyPosition() - this.targetVertex.getyPosition());
 
-        return Integer.compare(valueOfCurrentVertex, valueOfTargetVertex);
+        return Integer.compare(valueOfCurrentVertex, valueOfOtherVertex);
     }
 
     @Override

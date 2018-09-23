@@ -1,8 +1,5 @@
 package algorytmus.labyrinth.dijkstra.input;
 
-import algorytmus.labyrinth.dijkstra.model.Graph;
-import algorytmus.labyrinth.dijkstra.model.Vertex;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
