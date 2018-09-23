@@ -9,6 +9,7 @@ public class Vertex implements Comparable<Vertex>{
     private List<Edge> adjaciencies = new ArrayList<>();
     private Vertex previousVertex;
     private boolean isPortal = false;
+    private int portalNumber;
 
     //minimum number Of moves it takes to get from start vertex to this vertex
     private int distance = Integer.MAX_VALUE;
@@ -74,6 +75,14 @@ public class Vertex implements Comparable<Vertex>{
 
     public void setPortal(boolean portal) {
         isPortal = portal;
+    }
+
+    public int getPortalNumber() {
+        return portalNumber;
+    }
+
+    public void setPortalNumber(int portalNumber) {
+        this.portalNumber = portalNumber;
     }
 
     @Override

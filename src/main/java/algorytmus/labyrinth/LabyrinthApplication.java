@@ -77,13 +77,17 @@ public class LabyrinthApplication {
 //		System.out.println(dijkstraAlgorithm.getShortestPathTo(vertex1));
 
 		InputHelper inputHelper = new InputHelper();
-		List<int[][]> listOfMapsFromFile = inputHelper.getListOfMapsFromFile("algorytmus_zadanie_1_input.txt");
+		List<int[][]> listOfMapsFromFile = inputHelper.getListOfMapsFromFile("algorytmus_zadanie_2_input.txt");
 
 		MapToGraphConverter mapToGraphConverter = new MapToGraphConverter();
+
+		List<Graph> graphs = new ArrayList<>();
 		for(int i = 0; i < listOfMapsFromFile.size(); i++){
-			mapToGraphConverter.convertMapToGraph(listOfMapsFromFile.get(i));
+			Graph graph = mapToGraphConverter.convertMapToGraph(listOfMapsFromFile.get(i));
+			mapToGraphConverter.updateAdjacencies(graph);
+			graphs.add(graph);
 		}
 
-
+		System.out.println("laal");
 	}
 }

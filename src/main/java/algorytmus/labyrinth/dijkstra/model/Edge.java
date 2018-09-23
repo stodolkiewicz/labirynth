@@ -1,9 +1,14 @@
 package algorytmus.labyrinth.dijkstra.model;
 
 public class Edge {
-    private int weight;
+    private int weight = 1;
     private Vertex startVertex;
     private Vertex targetVertex;
+
+    public Edge(Vertex startVertex, Vertex targetVertex) {
+        this.startVertex = startVertex;
+        this.targetVertex = targetVertex;
+    }
 
     public Edge(int weight, Vertex startVertex, Vertex targetVertex) {
         this.weight = weight;
